@@ -3,8 +3,16 @@
 
 #include "y_list.h"
 
+void list_test(void);
+
 int main(int argc, char **argv)
 {
+    list_test();
+
+    return EXIT_SUCCESS;
+}
+
+void list_test(void) {
     int sample[] = {2, 5, 3, 6, 9};
     int res = 0, index;
     YList *list = YList_new();
@@ -20,7 +28,4 @@ int main(int argc, char **argv)
     // this should out of bound
     res = YList_removeIndex(list, 4);
     printf("res == %d\n", res);
-
-
-    return EXIT_SUCCESS;
 }
