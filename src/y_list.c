@@ -4,8 +4,8 @@
 
 typedef struct _YListInstance {
     void                        *data;
-    struct _YListInstance    *prev;
-    struct _YListInstance    *next;
+    struct _YListInstance       *prev;
+    struct _YListInstance       *next;
 } YListInstance;
 
 struct _YListPrivate {
@@ -156,4 +156,25 @@ int YList_removeIndex(YList *list, int index) {
     }
     priv->count--;
     return 0;
+}
+
+void *YList_getItem(YList *list, int index) {
+    if (NULL == list) {
+        // throw null pointer exception.
+        return NULL;
+    }
+    YListPrivate *priv = list->priv;
+
+    if (0 > index || priv->count < index) {
+        // throw out of range exception.
+        return NULL;
+    }
+
+    YListInstance *temp = priv->instance;
+    while (0 < index) {
+        temp = temp->next;
+        index--;
+    }
+
+    return temp->data;
 }

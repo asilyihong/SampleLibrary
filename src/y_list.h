@@ -20,4 +20,5 @@ int YList_add(YList *list, void *data);
 int YList_removeItem(YList *list, void *data);
 int YList_removeIndex(YList *list, int index);
 
+void *YList_getItem(YList *list, int index);
 #endif // __Y_LIST_H__
