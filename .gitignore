@@ -15,3 +15,13 @@
 *.exe
 *.out
 *.app
+src/test
+
+# Makefiles
+*Makefile
+
+# .deps
+*/.deps
+
+# configures
+config.*
