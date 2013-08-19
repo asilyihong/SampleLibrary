@@ -4,7 +4,7 @@
 
 struct _YVectorPrivate {
     void **data;
-    void *current;
+    void **current;
     int cCount; // current count
     int aCount; // allocate count
 };
@@ -30,7 +30,7 @@ YVector *YVector_newWithCount(int count) {
     priv->data = malloc(sizeof(void *) * count);
     priv->aCount = count;
     priv->cCount = 0;
-    priv->current = *(priv->data);
+    priv->current = priv->data;
 
     return res;
 }
@@ -72,7 +72,7 @@ int YVector_add(YVector *vector, void *data) {
         priv->data = realloc(priv->data, sizeof(void *) * priv->aCount);
     }
 
-    priv->current = data;
+    *(priv->current) = data;
     priv->current++;
     priv->cCount++;
     return 0;
@@ -86,7 +86,7 @@ void *YVector_pop(YVector *vector) {
     
     YVectorPrivate *priv = vector->priv;
     priv->current--;
-    void *data = priv->current;
+    void *data = *(priv->current);
     priv->data[priv->cCount] = NULL;
     priv->cCount--;
     return data;
