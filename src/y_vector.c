@@ -70,6 +70,7 @@ int YVector_add(YVector *vector, void *data) {
     if (priv->aCount - 1 <= priv->cCount) {
         priv->aCount <<= 1;
         priv->data = realloc(priv->data, sizeof(void *) * priv->aCount);
+        priv->current = priv->data + priv->cCount;
     }
 
     *(priv->current) = data;
