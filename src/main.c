@@ -2,8 +2,10 @@
 #include <stdlib.h>
 
 #include "y_list.h"
+#include "y_vector.h"
 
 void list_test(void);
+void vector_test(void);
 
 int main(int argc, char **argv)
 {
@@ -28,4 +30,8 @@ void list_test(void) {
     // this should out of bound
     res = YList_removeIndex(list, 4);
     printf("res == %d\n", res);
+}
+
+void vector_test(void) {
+    return;
 }
