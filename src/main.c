@@ -10,6 +10,7 @@ void vector_test(void);
 int main(int argc, char **argv)
 {
     list_test();
+    vector_test();
 
     return EXIT_SUCCESS;
 }
@@ -33,5 +34,23 @@ void list_test(void) {
 }
 
 void vector_test(void) {
-    return;
+    int sample[] = {2, 5, 3, 6, 9};
+    int res = 0, index;
+    void *item;
+    YVector *vector = YVector_new();
+    for(index = 0; index < 5; index++) {
+        res = YVector_add(vector, &sample[index]);
+        printf("res == %d\n", res);
+    }
+
+    item = YVector_pop(vector);
+    printf("(int)(*(int *)(item)) == %d\n", (int)(*(int *)item));
+    item = YVector_pop(vector);
+    printf("(int)(*(int *)(item)) == %d\n", (int)(*(int *)item));
+    item = YVector_pop(vector);
+    printf("(int)(*(int *)(item)) == %d\n", (int)(*(int *)item));
+    item = YVector_pop(vector);
+    printf("(int)(*(int *)(item)) == %d\n", (int)(*(int *)item));
+    item = YVector_pop(vector);
+    printf("(int)(*(int *)(item)) == %d\n", (int)(*(int *)item));
 }
