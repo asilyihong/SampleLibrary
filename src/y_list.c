@@ -85,6 +85,29 @@ out:
     return 0;
 }
 
+void *YList_setItemByIndex(YList *list, int index, void *data) {
+    if (NULL == list) {
+        // throw null pointer exception.
+        return NULL;
+    }
+
+    YListPrivate *priv = list->priv;
+    YListInstance *temp = priv->instance;
+    if (index >= priv->count) {
+        // throw out of bound exception.
+        return NULL;
+    }
+
+    while (0 != index) {
+        temp = temp->next;
+        index--;
+    }
+
+    void *oldData = temp->data;
+    temp->data = data;
+    return oldData;
+}
+
 int YList_removeItem(YList *list, void *data) {
     if (NULL == list) {
         // throw null pointer exception.

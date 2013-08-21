@@ -17,6 +17,7 @@ YList *YList_new(void);
 void YList_free(YList *list);
 
 int YList_add(YList *list, void *data);
+void *YList_setItemByIndex(YList *list, int index, void *data);
 int YList_removeItem(YList *list, void *data);
 int YList_removeIndex(YList *list, int index);
 
