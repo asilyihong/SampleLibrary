@@ -25,3 +25,7 @@ src/test
 
 # configures
 config.*
+
+# LibreOffice restore file
+*#
+
